@@ -23,7 +23,18 @@
 
 ### run the application
 ```shell script
-java -jar target/csd-java-quarkus-1.0-SNAPSHOT.jar
+java -jar target/quarkus-app/quarkus-run.jar 
+```
+
+## On the remote machine
+```
+ssh -v -i ~/.ssh/220128-acsd -p 4712 root@220128-acsd.jensen-und-komplizen.de
+cd csd_adventure_java_quarkus/
+git pull
+./mvnw package
+pgrep -f quarkus.http.port=4711 | xargs kill -9
+java -Dquarkus.http.port=4711 -jar target/quarkus-app/quarkus-run.jar &
+url: 220128-acsd.jensen-und-komplizen.de:4711
 ```
 
 ---

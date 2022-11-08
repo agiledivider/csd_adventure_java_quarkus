@@ -1,0 +1,5 @@
+TODO goes here
+- Fix HTTP/HTTPS issue in TimeService
+- Write feature test for other Scenarios in help.feature
+- command in hallway is shitty: washroom = door -> unclear
+- door back to loo (initial game starting point) required

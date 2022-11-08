@@ -6,13 +6,13 @@ body {
 }
 
 input {
-    background: black;
+    background: #333333;
     caret-color: forestgreen;
     caret-shape: underscore;
     border: none;
     color: forestgreen;
     font-family: "Space Mono", monospace;
-    font-size: 1em;
+    font-size: 1.2em;
     margin: 1em 0;
 
 }

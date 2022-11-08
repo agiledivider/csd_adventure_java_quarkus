@@ -1,41 +1,73 @@
 package de.derkomischeagilist;
 
-import de.derkomischeagilist.Rooms.Loo;
+import de.derkomischeagilist.Rooms.*;
+
+import java.util.Locale;
 
 public class Adventure {
 
     private int counter;
-    private Loo room;
+    protected Room currentRoom;
+    private Room loo;
+    protected Room washroom;
+    private Room hallway;
+    private Room teamOffice;
+    private Room kitchen;
     private String lastResponse;
 
     public Adventure() {
-        room = new Loo();
+        loo = new Loo();
+        washroom = new WashRoom();
+        hallway = new Hallway();
+        teamOffice = new TeamOffice();
+        kitchen = new Kitchen();
+        currentRoom = loo;
         counter = 0;
         lastResponse = "";
     }
 
     public String tell(String command) {
         String response = "";
-        switch (command){
+        switch (command.toLowerCase()){
             case "look around":
-                response = room.DetailedDescription();
-                break;
-            case "look at magazines":
-                response = "You see a very much used Micky Mouse magazine, a very old and unusable playboy and what seems to be a scrum guide 2009 in mint condition.";
+                response = currentRoom.getDetailedDescription();
                 break;
             case "count":
                 counter++;
                 response = "The counter is at " + counter;
                 break;
+            case "go through door":
+                currentRoom = washroom;
+                response = currentRoom.getDescription();
+                break;
+            case "use door to hallway":
+                currentRoom = hallway;
+                response = currentRoom.getDescription();
+                break;
+            case "use door to team office":
+                currentRoom = teamOffice;
+                response = currentRoom.getDescription();
+                break;
+            case "use door to kitchen":
+                currentRoom = kitchen;
+                response = currentRoom.getDescription();
+                break;
+            case "help":
+                response = currentRoom.getHelp();
+
+                if(response == null || response.length() <= 0)
+                    response = "There is no help for you!";
+                    
+                break;
             default:
-               return lastResponse + "\n\nWhat???";
+               return currentRoom.handleCommand(command);
         }
         lastResponse = response;
         return response;
     }
 
     public String Begin() {
-        lastResponse = room.Description();
-        return room.Description();
+        lastResponse = currentRoom.getDescription();
+        return currentRoom.getDescription();
     }
 }
