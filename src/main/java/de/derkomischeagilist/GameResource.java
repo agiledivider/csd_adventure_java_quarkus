@@ -32,6 +32,10 @@ public class GameResource {
                 "</head><body><h1>Hello Gamers</h1><div id=\"gameInfo\"><p>Welcome to our new Adventure!<br>"+
                 adventure.Begin()+
                 "</p></div><form id=\"commandForm\" ><input id=\"command\" type=\"text\"/></form>"+
+                "<div id=\"log-wrapper\" style=\"display: none\">\n" +
+                "    <div id=\"log\"></div>\n" +
+                "    <div id=\"log-delete\">Log löschen</div>\n" +
+                "</div>" +
                 "</body></html>";
     }
 }

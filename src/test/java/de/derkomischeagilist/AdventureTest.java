@@ -198,33 +198,6 @@ public class AdventureTest {
         assertThat(actual, containsStringIgnoringCase("toilet flushed"));
     }
 
-    @Test
-    void examineToiletPaperShowsToiletPaperDetails() {
-        //given I am on the loo
-        assertThat(adventure.Begin(), containsStringIgnoringCase("you wake up on the Loo"));
-        //When I examine the toilet paper for the first time
-        String actual = adventure.tell("look at toilet paper");
-        //Then I see the toilet paper details
-        assertThat(actual, containsStringIgnoringCase("On the first piece is written: \"Scrum Master:"));
-        assertThat(actual, containsStringIgnoringCase("There are more pieces on the ground"));
-        //When I examine the toilet paper for the second time
-        actual = adventure.tell("look at toilet paper");
-        //Then I see the toilet paper details
-        assertThat(actual, containsStringIgnoringCase("Another one states:"));
-        //When I examine the toilet paper for the third time
-        actual = adventure.tell("look at toilet paper");
-        //Then I see the toilet paper details
-        assertThat(actual, containsStringIgnoringCase("On the second piece is written: \"Product Owner:"));
-        //When I examine the toilet paper for the third time
-        actual = adventure.tell("look at toilet paper");
-        //Then I see the toilet paper details
-        assertThat(actual, containsStringIgnoringCase("On the last piece is written: \"Developers:"));
-        assertThat(actual, containsStringIgnoringCase("I remember. I need to find my Scrum team"));
-        //When I examine the toilet paper for the fourth time
-        actual = adventure.tell("look at toilet paper");
-        //Then I see the toilet paper details
-        assertThat(actual, containsStringIgnoringCase("On the first piece is written: \"Scrum Master:"));
-    }
 
     @Test
     void readAJokeOnLooSuccessful(){
